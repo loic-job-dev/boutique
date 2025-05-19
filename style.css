@@ -1,0 +1,47 @@
+body {
+    margin:0em;
+    background-color: #fff8f1;
+}
+
+/* Codes pour le header */
+#header {
+    background-color: #000000;
+    color: white;
+}
+
+/* codes pour les images */
+
+
+/* Codes pour le footer*/
+footer {
+    color: white;
+    background-color: #000000;
+}
+
+footer a {
+    color: white;
+}
+
+footer a :visited {
+    color:white;
+}
+
+#copyright {
+    color: orangered;
+}
+
+
+
+/* Codes pour personnaliser le bouton */
+.btn-primary {
+    background-color: grey;
+    border-color: black;
+}
+
+.btn-primary:hover {
+    background-color: orangered;
+    border-top-color: rgb(206, 198, 198);
+    border-left-color: rgb(206, 198, 198);
+    border-bottom-color: grey;
+    border-right-color: gray;
+}

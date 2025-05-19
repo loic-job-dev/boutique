@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>title</title>
+    <meta name="description" content="Boutique en ligne non-officielle de loic-job-dev">
+    <title>Boutique en ligne de loic-job-dev</title>
 </head>
 
-<body>
-    <h1>Item page</h1>
+<?php
+$name = "Gants";
+$description = "Voici des gants de boxe de débutants";
+$picture = "/pictures/gants-de-boxe-120-ergonomiques-noirs.avif";
+?>
 
-    <?php
-    $name = "Gants";
-    $description = "Voici des gants de boxe de débutants";
-    $picture = "/pictures/gants-de-boxe-120-ergonomiques-noirs.avif";
-    ?>
-    <h2><?= $name ?></h2>
-    <p><?= $description ?></p>
-    <img src="<?= $picture ?>" alt="<?= $name ?>">
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-6 col-lg-4 my-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title"><?= $name ?></h3>
+                    <p class="card-text text-wrap"><?= $description ?></p>
+                </div>
+                <img src="<?= $picture ?>" alt="<?= $name ?>" class="card-img-top">
+                <a class="btn btn-primary" href="" role="button">Commander</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-</body>
 
 </html>
