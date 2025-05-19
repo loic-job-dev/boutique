@@ -15,7 +15,9 @@
     <?php require(__DIR__ . '/header.php'); ?>
     <main class="min-vh-100">
         <?php echo 'Bienvenue dans mon projet';
-        require(__DIR__ . '/item.php') ?>
+        require(__DIR__ . '/item.php');
+        require(__DIR__ . '/simple-catalog.php');
+        require(__DIR__ . '/catalog-with-keys.php') ?>
     </main>
     <?php require(__DIR__ . '/footer.php'); ?>
 </body>

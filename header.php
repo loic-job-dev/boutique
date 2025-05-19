@@ -2,7 +2,7 @@
 
 <head>
     <meta name="description" content="Boutique en ligne non-officielle de loic-job-dev">
-    <title>Boutique en ligne de loic-job-dev</title>
+    <title>Header de la boutique en ligne de loic-job-dev</title>
 </head>
 
 <header>

@@ -2,7 +2,7 @@
 
 <head>
     <meta name="description" content="Boutique en ligne non-officielle de loic-job-dev">
-    <title>Boutique en ligne de loic-job-dev</title>
+    <title>Card pour un produit de la boutique en ligne de loic-job-dev</title>
 </head>
 
 <?php
