@@ -1,3 +1,5 @@
+<?php include (__DIR__ . '/my-functions.php'); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
