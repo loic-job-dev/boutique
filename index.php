@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include(__DIR__ . '/my-functions.php'); ?>
 
 <!DOCTYPE html>
@@ -24,23 +26,20 @@
 
         <?php
         //define variables and set to empty values
-        $quantity = "";
+        // $quantityProduct = "";
+        // $nameProduct = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $quantity = test_input($_POST["quantity"]);
-        }
-
-        function test_input($data)
-        {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
+            $nameProduct = $_POST["name"];
+            $quantitiesProduct = $_POST["quantities"[$nameProduct]];       
         }
 
         echo "<h2>Your Input:</h2>";
-        echo $quantity;
+        echo $nameProduct;
+        echo $quantitiesProduct;
         ?>
+
+        <a href="cart.php">Mon panier</a>
 
     </main>
     <?php require(__DIR__ . '/footer.php'); ?>

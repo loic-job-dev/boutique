@@ -52,12 +52,15 @@ sort($products);
                         <p class="card-text text-wrap">Prix discount : <?= formatPrice(discountedPrice($product["price"], $product["discount"])); ?></p>
                     </div>
                     <img src="<?= $product["picture_url"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                    <form action="/index.php" method="POST">
                         <fieldset>
                             <label for="quantity">Quantité :</label>
-                            <input type="number" id ="quantity" name="quantity" min="1" step="1" required>
+                            <input type="number" id ="quantity" name="quantities[<?= $product['name']?>]" min="1" step="1" required>
+                            <input type="hidden" name="name" value="<?= $product["name"] ?>">
+                            <input type="hidden" name="price" value="<?= $product["price"] ?>">
+                            <input type="hidden" name="weight" value="<?= $product["weight"] ?>">
                         </fieldset>
-                        <button class="btn btn-primary">Commander</button>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Commander">
                     </form>
                 </div>
             </div>
