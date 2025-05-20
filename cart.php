@@ -44,7 +44,28 @@
 
         <div class="container mt-5 mb-5">
             <div class="row justify-content-center">
-                <div class="col"></div>
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Article</th>
+                                <th>Quantité</th>
+                                <th>Prix unitaire TTC</th>
+                                <th>Prix total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($commande as $key => $product) {?>
+                            <tr>
+                                <td>Giraud</td>
+                                <td>Pierre</td>
+                                <td>28</td>
+                                <td>28</td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
