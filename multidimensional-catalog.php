@@ -41,31 +41,41 @@ sort($products);
 ?>
 
 <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <?php foreach ($products as $product) { ?>
-            <div class="col-6 col-lg-4 my-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <h3 class="card-title"><?= $product["name"] ?></h3>
-                        <p class="card-text text-wrap">Prix : <?= formatPrice($product["price"]) ?></p>
-                        <p class="card-text text-wrap">Prix HT : <?= formatPrice(priceExcludingVAT($product["price"])); ?></p>
-                        <p class="card-text text-wrap">Prix discount : <?= formatPrice(discountedPrice($product["price"], $product["discount"])); ?></p>
-                    </div>
-                    <img src="<?= $product["picture_url"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
-                    <form action="/index.php" method="POST">
+    <form action="/cart.php" method="POST">
+        <div class="row justify-content-center">
+
+            <?php foreach ($products as $key => $product) { ?>
+
+                <!-- $key est l’identifiant unique (gants, coquille, etc.).
+            $product est le tableau de données du produit (nom, prix, poids, image…). -->
+
+                <div class="col-6 col-lg-4 my-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h3 class="card-title"><?= $product["name"] ?></h3>
+                            <p class="card-text text-wrap">Prix : <?= formatPrice($product["price"]) ?></p>
+                            <p class="card-text text-wrap">Prix HT : <?= formatPrice(priceExcludingVAT($product["price"])); ?></p>
+                            <p class="card-text text-wrap">Prix discount : <?= formatPrice(discountedPrice($product["price"], $product["discount"])); ?></p>
+                        </div>
+                        <img src="<?= $product["picture_url"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
+
                         <fieldset>
-                            <label for="quantity">Quantité :</label>
-                            <input type="number" id ="quantity" name="quantities[<?= $product['name']?>]" min="1" step="1" required>
-                            <input type="hidden" name="name" value="<?= $product["name"] ?>">
-                            <input type="hidden" name="price" value="<?= $product["price"] ?>">
-                            <input type="hidden" name="weight" value="<?= $product["weight"] ?>">
+                            <label for="quantity_<?= $key ?>">Quantité :</label>
+                            <input type="number" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="0" required>
+                            <input type="hidden" name="names[<?= $key ?>]" value="<?= $product['name'] ?>">
+                            <input type="hidden" name="prices[<?= $key ?>]" value="<?= $product['price'] ?>">
+                            <input type="hidden" name="weights[<?= $key ?>]" value="<?= $product['weight'] ?>">
+                            <!-- Tous les noms de champs utilisent name="champs[<?= $key ?>]" pour lier les données à chaque produit unique. -->
+
                         </fieldset>
-                        <input type="submit" name="submit" class="btn btn-primary" value="Commander">
-                    </form>
+                    </div>
                 </div>
-            </div>
-        <?php }; ?>
-    </div>
+            <?php }; ?>
+        </div>
+        <input type="submit" name="submit" class="btn btn-primary" value="Commander">
+        <!-- Le </form> est en dehors de la boucle, c’est un seul formulaire pour tous les produits. -->
+
+    </form>
 </div>
 
 </html>

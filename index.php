@@ -24,21 +24,6 @@
         //require(__DIR__ . '/catalog-with-keys.php');
         require(__DIR__ . '/multidimensional-catalog.php'); ?>
 
-        <?php
-        //define variables and set to empty values
-        // $quantityProduct = "";
-        // $nameProduct = "";
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nameProduct = $_POST["name"];
-            $quantitiesProduct = $_POST["quantities"[$nameProduct]];       
-        }
-
-        echo "<h2>Your Input:</h2>";
-        echo $nameProduct;
-        echo $quantitiesProduct;
-        ?>
-
         <a href="cart.php">Mon panier</a>
 
     </main>
