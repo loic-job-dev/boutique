@@ -37,12 +37,12 @@ $products = [
         "picture_url" => "/pictures/protege-tibia-full-contact-et-boxe-francaise-adulte.avif"
     ]
 ];
-
+sort($products);
 ?>
 
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-        <?php foreach ($products as $product) {?>
+        <?php foreach ($products as $product) { ?>
             <div class="col-6 col-lg-4 my-4">
                 <div class="card h-100 text-center">
                     <div class="card-body">
@@ -52,7 +52,13 @@ $products = [
                         <p class="card-text text-wrap">Prix discount : <?= formatPrice(discountedPrice($product["price"], $product["discount"])); ?></p>
                     </div>
                     <img src="<?= $product["picture_url"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
-                    <a class="btn btn-primary" href="" role="button">Commander</a>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                        <fieldset>
+                            <label for="quantity">Quantité :</label>
+                            <input type="number" id ="quantity" name="quantity" min="1" step="1" required>
+                        </fieldset>
+                        <button class="btn btn-primary">Commander</button>
+                    </form>
                 </div>
             </div>
         <?php }; ?>

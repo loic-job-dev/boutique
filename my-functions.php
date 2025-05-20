@@ -2,7 +2,7 @@
 
 <head>
     <meta name="description" content="Page de fonctions utilisées sur le site">
-    <title>Fonctions de la boutique non-officielle</title>
+    <title>Boutique en ligne de loic-job-dev</title>
 </head>
 
 <?php 
