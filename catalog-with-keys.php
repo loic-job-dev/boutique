@@ -6,7 +6,6 @@
 </head>
 
 <?php
-$products = ["gants", "protege_dents", "coquille", "protege_tibia"];
 
 $gants = [
     "name" => "Gants",
@@ -41,7 +40,7 @@ $protege_tibia = [
 ];
 ?>
 
-<div class="container mt-5 mb-5">
+<!-- <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-6 col-lg-4 my-4">
             <div class="card h-100 text-center">
@@ -87,7 +86,7 @@ $protege_tibia = [
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 </html>

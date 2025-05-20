@@ -17,7 +17,7 @@
         <?php echo 'Bienvenue dans mon projet';
         require(__DIR__ . '/item.php');
         require(__DIR__ . '/simple-catalog.php');
-        require(__DIR__ . '/catalog-with-keys.php');
+        // require(__DIR__ . '/catalog-with-keys.php');
         require(__DIR__ . '/multidimensional-catalog.php'); ?>
     </main>
     <?php require(__DIR__ . '/footer.php'); ?>

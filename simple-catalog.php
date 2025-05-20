@@ -12,9 +12,11 @@ echo "Nombre de produits dans le tableau : " . count($products) . "<br>";
 
 sort($products);
 
-echo "Premier produit : " . ($products[0]) . "<br>";
-
-echo "Dernier produit : " . ($products[count($products)-1]) . "<br>" . "<br>";
+$foo = 0;
+do {
+    echo "Produit N°" . $foo+1 . " : " . $products[$foo] . "<br>";
+    $foo++;
+} while ($foo <= count($products)-1);
 ?>
 
 </html>
