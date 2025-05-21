@@ -22,20 +22,21 @@
                     </thead>
                     <tbody>
                         <?php foreach ($_SESSION["commande"] as $key => $product) {
-                            echo $key; ?>
-                            <tr>
-                                <td><?php echo $product["name"] ?></td>
-                                <td><?php echo $product["quantity"] ?>
-                                    <label for="quantity_<?= $key ?>"></label>
-                                    <input type="number" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?= $product["quantity"] ?>" required>
-                                    <input type="hidden" name="names[<?= $key ?>]" value="<?= $product['name'] ?>">
-                                    <input type="hidden" name="prices[<?= $key ?>]" value="<?= $product['price'] ?>">
-                                    <input type="hidden" name="weights[<?= $key ?>]" value="<?= $product['weight'] ?>">
-                                </td>
-                                <td><?php formatPrice($product["price"]) ?></td>
-                                <td><?php formatPrice($product["total_price"]) ?></td>
-                            </tr>
-                        <?php } ?>
+                            if ($product["quantity"] != 0) { ?>
+                                <tr>
+                                    <td><?php echo $product["name"] ?></td>
+                                    <td><?php echo $product["quantity"] ?>
+                                        <label for="quantity_<?= $key ?>"></label>
+                                        <input type="number" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?= $product["quantity"] ?>" required>
+                                        <input type="hidden" name="names[<?= $key ?>]" value="<?= $product['name'] ?>">
+                                        <input type="hidden" name="prices[<?= $key ?>]" value="<?= $product['price'] ?>">
+                                        <input type="hidden" name="weights[<?= $key ?>]" value="<?= $product['weight'] ?>">
+                                    </td>
+                                    <td><?php formatPrice($product["price"]) ?></td>
+                                    <td><?php formatPrice($product["total_price"]) ?></td>
+                                </tr>
+                        <?php  }
+                        } ?>
                     </tbody>
                     <tfoot>
                         <tr>

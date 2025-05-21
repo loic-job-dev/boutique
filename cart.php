@@ -26,7 +26,7 @@
             //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
             foreach ($_POST['quantities'] as $key => $quantity) {
                 //On parcours le tableau 'quantities'
-                if ($quantity > 0) {
+                 if ($quantity >= 0) {
                     //Si une quantité a été saisie
                     $_SESSION["commande"][$key] = [
                         //On définit les valeurs du tableau à l'index 'key' (gants, coquille, etc...)
@@ -53,7 +53,7 @@
                 $totalWeight = $totalWeight += $product["total_weight"];
         }
 
-        $_SESSION["transportFees"] = 0; 
+        $_SESSION["transportFees"] = 0;
 
         //(string) $transporterChosen = $_SESSION["transporter"];
 

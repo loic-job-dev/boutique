@@ -18,11 +18,7 @@
 <body>
     <?php require(__DIR__ . '/header.php'); ?>
     <main class="min-vh-100">
-        <?php echo 'Bienvenue dans mon projet';
-        //require(__DIR__ . '/item.php');
-        //require(__DIR__ . '/simple-catalog.php');
-        //require(__DIR__ . '/catalog-with-keys.php');
-        require(__DIR__ . '/multidimensional-catalog.php'); ?>
+        <?php require(__DIR__ . '/multidimensional-catalog.php'); ?>
 
         <a href="cart.php">Mon panier</a>
 
