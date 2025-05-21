@@ -50,9 +50,7 @@
 
         (float) $totalWeight = 0;
         foreach ($_SESSION["commande"] as $product) {
-            if (isset($product["total_weight"])) {
                 $totalWeight = $totalWeight += $product["total_weight"];
-            }
         }
 
         $_SESSION["transportFees"] = 0; 
@@ -60,10 +58,10 @@
         //(string) $transporterChosen = $_SESSION["transporter"];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['weights'])) {
-            if ($totalWeight < 400) {
-                $_SESSION["tranportFees"] = 500;
+            if ($totalWeight <= 200) {
+                $_SESSION["transportFees"] = 500;
             }
-            elseif ($totalWeight > 200 && $totalWeight < 1000) {
+            elseif ($totalWeight > 200 && $totalWeight <= 1000) {
                 $_SESSION["transportFees"] = ($totalProducts/10);
             }
             else {
@@ -72,13 +70,14 @@
         }
 
         $totalCart = 0;
-        $_SESSION[$totalCart] = $totalProducts + $_SESSION["transportFees"];
+        $_SESSION["totalCart"] = $totalProducts + $_SESSION["transportFees"];
 
         ?>
 
         <?php require(__DIR__ . '/table-cart.php'); ?>
 
         <?php require(__DIR__ . '/transport-cart.php'); ?>
+
 
         <a href="index.php">Accueil</a>
 

@@ -37,7 +37,7 @@ $products = [
         "picture_url" => "/pictures/protege-tibia-full-contact-et-boxe-francaise-adulte.avif"
     ]
 ];
-sort($products);
+//sort($products);
 ?>
 
 <div class="container mt-5 mb-5">
