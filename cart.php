@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include(__DIR__ . '/my-functions.php'); ?>
 
 <html lang="fr">
@@ -14,8 +16,11 @@
     <main class="min-vh-100">
 
         <?php
-        $commande = [];
+        if (!isset($_SESSION['commande'])) {
+            $_SESSION['commande'] = [];
+        }
         //on initialise un tableau vide qui contiendra les produits commandés.
+        //Si le tableau existe, on ne l'écrase pas
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
             //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
@@ -23,7 +28,7 @@
                 //On parcours le tableau 'quantities'
                 if ($quantity > 0) {
                     //Si une quantité a été saisie
-                    $commande[$key] = [
+                    $_SESSION["commande"][$key] = [
                         //On définit les valeurs du tableau à l'index 'key' (gants, coquille, etc...)
                         'name' => $_POST['names'][$key],
                         //On défini un nom à partir du tableau names créé dans le formulaire
@@ -32,42 +37,48 @@
                         'quantity' => $quantity,
                         //On est déjà en train de parcourir le tableau quantities
                         'total_price' => $_POST['prices'][$key] * $quantity,
+                        'total_weight' => $_POST['weights'][$key] * $quantity,
                     ];
                 }
             }
         }
+
+        (float) $totalProducts = 0;
+        foreach ($_SESSION["commande"] as $product) {
+            $totalProducts = $totalProducts += $product["total_price"];
+        }
+
+        (float) $totalWeight = 0;
+        foreach ($_SESSION["commande"] as $product) {
+            if (isset($product["total_weight"])) {
+                $totalWeight = $totalWeight += $product["total_weight"];
+            }
+        }
+
+        $_SESSION["transportFees"] = 0; 
+
+        //(string) $transporterChosen = $_SESSION["transporter"];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['weights'])) {
+            if ($totalWeight < 400) {
+                $_SESSION["tranportFees"] = 500;
+            }
+            elseif ($totalWeight > 200 && $totalWeight < 1000) {
+                $_SESSION["transportFees"] = ($totalProducts/10);
+            }
+            else {
+                $_SESSION["transportFees"] = 0;
+            }
+        }
+
+        $totalCart = 0;
+        $_SESSION[$totalCart] = $totalProducts + $_SESSION["transportFees"];
+
         ?>
 
-        <?php
-        print_r($commande);
-        ?>
+        <?php require(__DIR__ . '/table-cart.php'); ?>
 
-        <div class="container mt-5 mb-5">
-            <div class="row justify-content-center">
-                <div class="col">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Article</th>
-                                <th>Quantité</th>
-                                <th>Prix unitaire TTC</th>
-                                <th>Prix total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($commande as $key => $product) {?>
-                            <tr>
-                                <td>Giraud</td>
-                                <td>Pierre</td>
-                                <td>28</td>
-                                <td>28</td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <?php require(__DIR__ . '/transport-cart.php'); ?>
 
         <a href="index.php">Accueil</a>
 

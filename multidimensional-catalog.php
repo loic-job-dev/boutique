@@ -10,28 +10,28 @@ $products = [
 
     "gants" => [
         "name" => "Gants",
-        "price" => 2000,
+        "price" => 1999,
         "weight" => 300,
         "discount" => 10,
         "picture_url" => "/pictures/gants-de-boxe-120-ergonomiques-noirs.avif"
     ],
     "protege_dents" => [
         "name" => "Protège-dents",
-        "price" => 1500,
+        "price" => 1499,
         "weight" => 20,
         "discount" => 0,
         "picture_url" => "/pictures/protege-dents-de-boxe-et-arts-martiaux-adulte-mono-matiere.avif"
     ],
     "coquille" => [
         "name" => "Coquille",
-        "price" => 1500,
+        "price" => 1699,
         "weight" => 50,
         "discount" => 0,
         "picture_url" => "/pictures/coquille-de-protection-slipee-homme-100-blanc.avif"
     ],
     "protege_tibia" => [
         "name" => "Protège-tibia",
-        "price" => 2500,
+        "price" => 2499,
         "weight" => 100,
         "discount" => 10,
         "picture_url" => "/pictures/protege-tibia-full-contact-et-boxe-francaise-adulte.avif"
