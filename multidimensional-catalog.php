@@ -35,9 +35,16 @@ $products = [
         "weight" => 100,
         "discount" => 10,
         "picture_url" => "/pictures/protege-tibia-full-contact-et-boxe-francaise-adulte.avif"
+    ],
+    "casque" => [
+        "name" => "Casque",
+        "price" => 1999,
+        "weight" => 300,
+        "discount" => 5,
+        "picture_url" => "/pictures/casque-de-boxe-adulte-integral-500-noir.avif"
     ]
 ];
-//sort($products);
+sort($products);
 ?>
 
 <div class="container mt-5 mb-5">
@@ -45,8 +52,8 @@ $products = [
         <div class="row justify-content-center">
 
             <?php foreach ($products as $key => $product) { ?>
-
-                <!-- $key est l’identifiant unique (gants, coquille, etc.).
+            
+            <!-- $key est l’identifiant unique (gants, coquille, etc.).
             $product est le tableau de données du produit (nom, prix, poids, image…). -->
 
                 <div class="col-6 col-lg-4 my-4">
@@ -61,12 +68,11 @@ $products = [
 
                         <fieldset>
                             <label for="quantity_<?= $key ?>">Quantité :</label>
-                            <input type="number" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="0" required>
+                            <input type="number" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"]?>" required>
                             <input type="hidden" name="names[<?= $key ?>]" value="<?= $product['name'] ?>">
                             <input type="hidden" name="prices[<?= $key ?>]" value="<?= $product['price'] ?>">
                             <input type="hidden" name="weights[<?= $key ?>]" value="<?= $product['weight'] ?>">
                             <!-- Tous les noms de champs utilisent name="champs[<?= $key ?>]" pour lier les données à chaque produit unique. -->
-
                         </fieldset>
                     </div>
                 </div>

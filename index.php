@@ -18,9 +18,25 @@
 <body>
     <?php require(__DIR__ . '/header.php'); ?>
     <main class="min-vh-100">
+
+
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <a href="cart.php" class="btn btn-primary">Mon panier</a>
+                </div>
+            </div>
+        </div>
+
         <?php require(__DIR__ . '/multidimensional-catalog.php'); ?>
 
-        <a href="cart.php">Mon panier</a>
+
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+                <a href="cart.php" class="btn btn-primary">Mon panier</a>
+            </div>
+        </div>
+
 
     </main>
     <?php require(__DIR__ . '/footer.php'); ?>

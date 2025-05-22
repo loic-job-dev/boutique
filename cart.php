@@ -53,7 +53,10 @@
                 $totalWeight = $totalWeight += $product["total_weight"];
         }
 
-        $_SESSION["transportFees"] = 0;
+        if (!isset($_SESSION["transportFees"])){
+            $_SESSION["transportFees"] = 0;
+        }
+        
 
         //(string) $transporterChosen = $_SESSION["transporter"];
 
@@ -78,8 +81,12 @@
 
         <?php require(__DIR__ . '/transport-cart.php'); ?>
 
-
-        <a href="index.php">Accueil</a>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+                <a href="index.php" class="btn btn-primary">Accueil</a>
+            </div>
+        </div>
+        
 
     </main>
     <?php require(__DIR__ . '/footer.php'); ?>
