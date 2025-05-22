@@ -49,7 +49,7 @@
 
 
         //Gestion des frais de livraison
-        include(__DIR__ . '/transport-fees.php');
+        // include(__DIR__ . '/transport-fees.php');
 
         //Récupération de nom du transporteur
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["transporter"])) {
@@ -97,6 +97,3 @@
 
     </main>
     <?php require(__DIR__ . '/footer.php'); ?>
-</body>
-
-</html>

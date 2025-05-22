@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 
 <?php include(__DIR__ . '/my-functions.php'); ?>
+<?php include(__DIR__ . '/datas.php'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">

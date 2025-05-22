@@ -16,7 +16,9 @@
 
         <div class="container mt-5 mb-5">
             <div class="row justify-content-center">
-                <a href="cart.php" class="btn btn-primary">Mon panier</a>
+                <div class="col offset-1">
+                    <a href="cart.php" class="btn btn-primary">Mon panier</a>
+                </div>
             </div>
         </div>
 

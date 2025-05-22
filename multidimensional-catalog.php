@@ -1,59 +1,3 @@
-<?php
-$products = [
-
-    "gants" => [
-        "name" => "Gants",
-        "price" => 1999,
-        "weight" => 300,
-        "discount" => 10,
-        "picture_url" => "/pictures/gants-de-boxe-120-ergonomiques-noirs.avif"
-    ],
-    "protege_dents" => [
-        "name" => "Protège-dents",
-        "price" => 1499,
-        "weight" => 20,
-        "discount" => 0,
-        "picture_url" => "/pictures/protege-dents-de-boxe-et-arts-martiaux-adulte-mono-matiere.avif"
-    ],
-    "coquille" => [
-        "name" => "Coquille",
-        "price" => 1699,
-        "weight" => 50,
-        "discount" => 0,
-        "picture_url" => "/pictures/coquille-de-protection-slipee-homme-100-blanc.avif"
-    ],
-    "protege_tibia" => [
-        "name" => "Protège-tibia",
-        "price" => 2499,
-        "weight" => 100,
-        "discount" => 10,
-        "picture_url" => "/pictures/protege-tibia-full-contact-et-boxe-francaise-adulte.avif"
-    ],
-    "casque" => [
-        "name" => "Casque",
-        "price" => 1999,
-        "weight" => 300,
-        "discount" => 5,
-        "picture_url" => "/pictures/casque-de-boxe-adulte-integral-500-noir.avif"
-    ],
-    "short" => [
-        "name" => "Short",
-        "price" => 2499,
-        "weight" => 200,
-        "discount" => 0,
-        "picture_url" => "/pictures/KMG_France_Mixte_Short_07_Kravmaga-scaled (1).jpg"
-    ],
-    "t_shirt" => [
-        "name" => "T-shirt",
-        "price" => 2499,
-        "weight" => 150,
-        "discount" => 5,
-        "picture_url" => "/pictures/RASH-GARDE-COURT-KMG-SHOP-2 (1).png"
-    ]
-];
-sort($products);
-?>
-
 <div class="container mt-1 mb-5">
     <form action="/cart.php" method="POST">
         <div class="row justify-content-center">
@@ -90,5 +34,3 @@ sort($products);
 
     </form>
 </div>
-
-</html>
