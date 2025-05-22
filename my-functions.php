@@ -1,10 +1,3 @@
-<html lang="fr">
-
-<head>
-    <meta name="description" content="Page de fonctions utilisées sur le site">
-    <title>Boutique en ligne de loic-job-dev</title>
-</head>
-
 <?php 
 
 function formatPrice (float $price) {
@@ -29,5 +22,3 @@ function emptyCart() {
 }
 
 ?>
-
-</html>

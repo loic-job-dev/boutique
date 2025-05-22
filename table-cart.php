@@ -1,16 +1,8 @@
-<html lang="fr">
 
-<head>
-    <meta name="description" content="Boutique en ligne non-officielle de loic-job-dev">
-    <title>Tableau récapitulatif de la commande</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-</head>
-
-<div class="container mt-5 mb-5">
+<div class="container-fluid mt-5 mb-5 ms-1 me-1">
     <form action="/cart.php" method="POST">
         <div class="row justify-content-center">
-            <div class="col">
+            <div class="col-12 col-lg-8">
                 <table class="table">
                     <thead>
                         <tr>
@@ -57,8 +49,9 @@
                         </tr>
                     </tfoot>
                 </table>
+                <?php require(__DIR__ . '/transport-cart.php'); ?>
+                <input type="submit" name="submit" class="btn btn-primary" value="Actualiser">
             </div>
         </div>
-        <input type="submit" name="submit" class="btn btn-primary" value="Actualiser">
     </form>
 </div>

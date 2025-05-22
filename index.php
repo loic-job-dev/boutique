@@ -20,7 +20,7 @@
     <main class="min-vh-100">
 
 
-        <div class="container mt-5 mb-5">
+        <div class="container mt-5 mb-2">
             <div class="row justify-content-center">
                 <div class="col">
                     <a href="cart.php" class="btn btn-primary">Mon panier</a>
