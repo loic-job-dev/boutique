@@ -1,10 +1,3 @@
-<html lang="fr">
-
-<head>
-    <meta name="description" content="Boutique en ligne non-officielle de loic-job-dev">
-    <title>Catalogue avec clés de la boutique non-officielle</title>
-</head>
-
 <?php
 $products = [
 
@@ -42,6 +35,20 @@ $products = [
         "weight" => 300,
         "discount" => 5,
         "picture_url" => "/pictures/casque-de-boxe-adulte-integral-500-noir.avif"
+    ],
+    "short" => [
+        "name" => "Short",
+        "price" => 2499,
+        "weight" => 200,
+        "discount" => 0,
+        "picture_url" => "/pictures/KMG_France_Mixte_Short_07_Kravmaga-scaled (1).jpg"
+    ],
+    "t_shirt" => [
+        "name" => "T-shirt",
+        "price" => 2499,
+        "weight" => 150,
+        "discount" => 5,
+        "picture_url" => "/pictures/RASH-GARDE-COURT-KMG-SHOP-2 (1).png"
     ]
 ];
 sort($products);

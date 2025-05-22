@@ -1,18 +1,5 @@
-<?php session_start(); ?>
-
-<?php include(__DIR__ . '/my-functions.php'); ?>
-
-<html lang="fr">
-
-<head>
-    <meta name="description" content="Boutique en ligne non-officielle de loic-job-dev">
-    <title>Catalogue simple de la boutique non-officielle</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-</head>
-
-<body>
-    <?php require(__DIR__ . '/header.php'); ?>
+    <?php $title = "Catalogue Karv maga de loic-job-dev";
+    require(__DIR__ . '/header.php'); ?>
     <main class="min-vh-100">
 
         <?php
