@@ -1,3 +1,5 @@
+</main>
+
 <footer>
     <div class="container-fluid border-top border-3 border-dark pt-3">
         <div id="footer_color" class="row">

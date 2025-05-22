@@ -1,6 +1,5 @@
-    <?php $title = "Catalogue Karv maga de loic-job-dev";
-    require(__DIR__ . '/header.php'); ?>
-    <main class="min-vh-100">
+    <!-- <?php $title = "Catalogue Karv maga de loic-job-dev";
+    require(__DIR__ . '/header.php'); ?> -->
 
         <?php
         if (!isset($_SESSION['commande'])) {
@@ -30,9 +29,6 @@
             }
         }
 
-
-
-
         //Calcul des totaux
         (float) $totalProducts = 0;
         foreach ($_SESSION["commande"] as $product) {
@@ -43,13 +39,6 @@
         foreach ($_SESSION["commande"] as $product) {
             $totalWeight = $totalWeight += $product["total_weight"];
         }
-
-
-
-
-
-        //Gestion des frais de livraison
-        // include(__DIR__ . '/transport-fees.php');
 
         //Récupération de nom du transporteur
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["transporter"])) {
@@ -94,6 +83,4 @@
             </div>
         </div>
 
-
-    </main>
     <?php require(__DIR__ . '/footer.php'); ?>

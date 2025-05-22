@@ -1,7 +1,5 @@
     <?php $title = "Boutique en ligne de loic-job-dev";
     require(__DIR__ . '/header.php'); ?>
-    <main class="min-vh-100">
-
 
         <div class="container mt-5 mb-2">
             <div class="row justify-content-center">
@@ -22,6 +20,4 @@
             </div>
         </div>
 
-
-    </main>
     <?php require(__DIR__ . '/footer.php'); ?>
