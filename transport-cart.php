@@ -4,7 +4,7 @@
             <fieldset>
                 <legend>Choix du transporteur :</legend>
                 <select id="transporter" name="transporter" required>
-                    <option value=""><?= $transportFees[$_SESSION["transporterChosen"]]["name"]?> </option>
+                    <option value="<?= $transportFees[$_SESSION["transporterChosen"]] ?? "" ?>"><?= $transportFees[$_SESSION["transporterChosen"]]["name"] ?? "Veuillez choisir :"?> </option>
                     <option value="punch">One punch delivery</option>
                     <option value="kravkage">KravKage</option>
                     <option value="blackbelt">BlackBelt Express</option>
