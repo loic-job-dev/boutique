@@ -21,7 +21,7 @@
                                     <td><?php formatPrice($product["price"]) ?></td>
                                     <td><?php formatPrice($product["total_price"]) ?></td>
                                 </tr>
-                        <?php  }
+                        <?php } 
                         ?>
                     </tbody>
                     <tfoot>

@@ -5,7 +5,7 @@ if (!isset($_SESSION['commande'])) {
     $_SESSION['commande'] = [];
 }
 
-
+print_r($_POST);
 
 foreach ($_POST['quantities'] as $key => $quantity) {
     if (!is_numeric($quantity) || $quantity < 0) { ?>
