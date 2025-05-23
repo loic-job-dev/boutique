@@ -12,12 +12,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION["commande"] as $key => $product) {                                ?>
+                        <?php foreach ($_SESSION["commande"] as $key => $product) { ?>
                                 <tr<?= $product["quantity"] == 0 ? ' class="d-none"' : '' ?>>
                                     <td><?php echo $product["name"] ?></td>
-                                    <td><?php echo $product["quantity"] ?>
-                                        <label for="quantity_<?= $key ?>"></label>
-                                        <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $products[$key]["name"] ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
+                                    <td class="d-flex align-items-center gap-2"><?php echo $product["quantity"] ?>
+                                        <input type="number" class="form-control w-50" id="quantity_<?= $key ?>" name="quantities[<?= $products[$key]["name"] ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
                                     </td>
                                     <td><?php formatPrice($product["price"]) ?></td>
                                     <td><?php formatPrice($product["total_price"]) ?></td>

@@ -1,4 +1,4 @@
-    <?php $title = "Catalogue Karv maga de loic-job-dev";
+<?php $title = "Catalogue Karv maga de loic-job-dev";
     require(__DIR__ . '/header.php'); ?> 
 
         <?php
@@ -30,4 +30,5 @@
             </div>
         </div>
 
-    <?php require(__DIR__ . '/footer.php'); ?>
+    
+<?php require(__DIR__ . '/footer.php'); ?>
