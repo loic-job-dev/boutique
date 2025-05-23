@@ -48,8 +48,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
             ];
             $index++;
         }
-        else {
-        $index++; }
+        else { ?>
+            <div class="alert alert-warning" role="alert">
+                <p>Tricheur!</p>
+                <p>Merci de ne pas pirater le site !</p>
+            </div>
+            <div class="container-fluid ms-1 me-1">
+                <form action="/end-session.php" method="POST">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Retour accueil">
+                    </div>
+                </div>
+                </form>
+            </div><?php
+        exit();
+        }
     }
 }
 
