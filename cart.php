@@ -29,7 +29,7 @@
         }
 
         //Calcul des frais de port en fonction du livreur
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['weights'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($transportFees as $transport => $fees) {
                 if ($_SESSION["transporterChosen"] === $transport) {
                     $_SESSION["transportFees"] = 0000;
