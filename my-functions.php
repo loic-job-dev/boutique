@@ -15,10 +15,11 @@ function discountedPrice(float $price, int $discount): float {
 }
 
 
-function emptyCart() {
+function emptyCart(): void {
         if (isset($_SESSION['commande'])) {
             $_SESSION['commande'] = [];
         }
 }
+
 
 ?>

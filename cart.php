@@ -1,33 +1,7 @@
-    <!-- <?php $title = "Catalogue Karv maga de loic-job-dev";
-    require(__DIR__ . '/header.php'); ?> -->
+    <?php $title = "Catalogue Karv maga de loic-job-dev";
+    require(__DIR__ . '/header.php'); ?> 
 
         <?php
-        if (!isset($_SESSION['commande'])) {
-            $_SESSION['commande'] = [];
-        }
-        //on initialise un tableau vide qui contiendra les produits commandés.
-        //Si le tableau existe, on ne l'écrase pas
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
-            //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
-            foreach ($_POST['quantities'] as $key => $quantity) {
-                //On parcours le tableau 'quantities'
-                if ($quantity >= 0) {
-                    //Si une quantité a été saisie
-                    $_SESSION["commande"][$key] = [
-                        //On définit les valeurs du tableau à l'index 'key' (gants, coquille, etc...)
-                        'name' => $_POST['names'][$key],
-                        //On défini un nom à partir du tableau names créé dans le formulaire
-                        'price' => $_POST['prices'][$key],
-                        'weight' => $_POST['weights'][$key],
-                        'quantity' => $quantity,
-                        //On est déjà en train de parcourir le tableau quantities
-                        'total_price' => $_POST['prices'][$key] * $quantity,
-                        'total_weight' => $_POST['weights'][$key] * $quantity,
-                    ];
-                }
-            }
-        }
 
         //Calcul des totaux
         (float) $totalProducts = 0;
@@ -41,6 +15,9 @@
         }
 
         //Récupération de nom du transporteur
+        if (!isset($_SESSION["transporterChosen"])) {
+            $_SESSION["transporterChosen"] = null;
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["transporter"])) {
             $_SESSION["transporterChosen"] = $_POST["transporter"];
         }
@@ -75,7 +52,7 @@
 
         ?>
 
-        <?php require(__DIR__ . '/table-cart.php'); ?>
+        <?php require(__DIR__ . '/table-cart.php');?>
 
         <div class="container mt-5 mb-5">
             <div class="row justify-content-center">

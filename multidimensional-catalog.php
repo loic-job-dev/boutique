@@ -1,5 +1,5 @@
 <div class="container mt-1 mb-5">
-    <form action="/cart.php" method="POST">
+    <form action="/check.php" method="POST">
         <div class="row justify-content-center">
 
             <?php foreach ($products as $key => $product) { ?>
@@ -19,10 +19,7 @@
 
                         <fieldset>
                             <label for="quantity_<?= $key ?>">Quantité :</label>
-                            <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"]?>" required>
-                            <input type="hidden" name="names[<?= $key ?>]" value="<?= $product['name'] ?>">
-                            <input type="hidden" name="prices[<?= $key ?>]" value="<?= $product['price'] ?>">
-                            <input type="hidden" name="weights[<?= $key ?>]" value="<?= $product['weight'] ?>">
+                            <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
                             <!-- Tous les noms de champs utilisent name="champs[<?= $key ?>]" pour lier les données à chaque produit unique. -->
                         </fieldset>
                     </div>
