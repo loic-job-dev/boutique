@@ -1,5 +1,5 @@
 <div class="container-fluid mt-5 mb-2">
-    <form action="/cart.php" method="POST">
+    <form action="/check.php" method="POST">
         <div class="row justify-content-center">
             <fieldset>
                 <legend>Choix du transporteur :</legend>

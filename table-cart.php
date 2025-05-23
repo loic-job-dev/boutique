@@ -1,6 +1,5 @@
-
 <div class="container-fluid mt-5 mb-5 ms-1 me-1">
-    <form action="/cart.php" method="POST">
+    <form action="/check.php" method="POST">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
                 <table class="table">
@@ -13,22 +12,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION["commande"] as $key => $product) {
-                            if ($product["quantity"] != 0) { ?>
-                                <tr>
+                        <?php foreach ($_SESSION["commande"] as $key => $product) {                                ?>
+                                <tr<?= $product["quantity"] == 0 ? ' class="d-none"' : '' ?>>
                                     <td><?php echo $product["name"] ?></td>
                                     <td><?php echo $product["quantity"] ?>
                                         <label for="quantity_<?= $key ?>"></label>
-                                        <input type="number" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?= $product["quantity"] ?>" required>
-                                        <input type="hidden" name="names[<?= $key ?>]" value="<?= $product['name'] ?>">
-                                        <input type="hidden" name="prices[<?= $key ?>]" value="<?= $product['price'] ?>">
-                                        <input type="hidden" name="weights[<?= $key ?>]" value="<?= $product['weight'] ?>">
+                                        <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $products[$key]["name"] ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
                                     </td>
                                     <td><?php formatPrice($product["price"]) ?></td>
                                     <td><?php formatPrice($product["total_price"]) ?></td>
                                 </tr>
                         <?php  }
-                        } ?>
+                        ?>
                     </tbody>
                     <tfoot>
                         <tr>

@@ -68,6 +68,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
 }
 
 
+        //Récupération de nom du transporteur
+        if (!isset($_SESSION["transporterChosen"])) {
+            $_SESSION["transporterChosen"] = null;
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["transporter"])) {
+            $_SESSION["transporterChosen"] = $_POST["transporter"];
+        }
+
+
+        //Initialisation des frais de livraison
+        if (!isset($_SESSION["transportFees"])) {
+            $_SESSION["transportFees"] = 0;
+        }
+
+        //Calcul des frais de port en fonction du livreur
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            foreach ($transportFees as $transport => $fees) {
+                if ($_SESSION["transporterChosen"] === $transport) {
+                    $_SESSION["transportFees"] = 0000;
+
+                    if ($totalWeight <= 200) {
+                        $_SESSION["transportFees"] = $transportFees[$transport]['weight_200'];
+                    } 
+
+                    if ($totalWeight > 200 && $totalWeight <= 1000) {
+                        $_SESSION["transportFees"] = $transportFees[$transport]['weight_1000'];
+                    }
+
+                }
+            }
+        }
+
 header('Location: /cart.php');
 exit();
 
