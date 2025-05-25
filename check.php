@@ -28,10 +28,9 @@ foreach ($_POST['quantities'] as $key => $quantity) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
     //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
-    $product_names = array_column($products, 'name');
-    $index=0;
 foreach ($_POST['quantities'] as $key => $quantity) {
     if (isset($products[$key])) {
+        if ($_POST["quantities"][$key] != 0) {
         $_SESSION["commande"][$key] = [
             'name' => $products[$key]["name"],
             'price' => $products[$key]["price"],
@@ -40,7 +39,7 @@ foreach ($_POST['quantities'] as $key => $quantity) {
             'total_price' => $products[$key]["price"] * $quantity,
             'total_weight' => $products[$key]["weight"] * $quantity,
         ];
-        }
+        } }
         else { ?>
             <div class="alert alert-warning" role="alert">
                 <p>Tricheur!</p>
@@ -92,7 +91,6 @@ foreach ($_POST['quantities'] as $key => $quantity) {
                 }
             }
         }
-
 
 header('Location: /cart.php');
 exit();
