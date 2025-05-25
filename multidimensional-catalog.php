@@ -21,7 +21,7 @@
 
                         <fieldset>
                             <label for="quantity_<?= $key ?>">Quantité :</label>
-                            <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $products[$key]["name"] ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
+                            <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
                             <!-- Tous les noms de champs utilisent name="champs[<?= $key ?>]" pour lier les données à chaque produit unique. -->
                         </fieldset>
                     </div>

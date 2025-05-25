@@ -5,7 +5,6 @@ if (!isset($_SESSION['commande'])) {
     $_SESSION['commande'] = [];
 }
 
-print_r($_POST);
 
 foreach ($_POST['quantities'] as $key => $quantity) {
     if (!is_numeric($quantity) || $quantity < 0) { ?>
@@ -31,22 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
     //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
     $product_names = array_column($products, 'name');
     $index=0;
-    foreach ($_POST['quantities'] as $key => $quantity) {
-        //On parcours le tableau 'quantities'
-        if (in_array($key, $product_names)) {
-            //Si une quantité a été saisie
-            $_SESSION["commande"][$index] = [
-                //On définit les valeurs du tableau à l'index 'index' (gants, coquille, etc...)
-                'name' => $products[$index]["name"],
-                //On défini un nom à partir du tableau names créé dans le formulaire
-                'price' => $products[$index]["price"],
-                'weight' => $products[$index]["weight"],
-                'quantity' => $quantity,
-                //On est déjà en train de parcourir le tableau quantities
-                'total_price' => $products[$index]["price"] * $quantity,
-                'total_weight' => $products[$index]["weight"] * $quantity,
-            ];
-            $index++;
+foreach ($_POST['quantities'] as $key => $quantity) {
+    if (isset($products[$key])) {
+        $_SESSION["commande"][$key] = [
+            'name' => $products[$key]["name"],
+            'price' => $products[$key]["price"],
+            'weight' => $products[$key]["weight"],
+            'quantity' => $quantity,
+            'total_price' => $products[$key]["price"] * $quantity,
+            'total_weight' => $products[$key]["weight"] * $quantity,
+        ];
         }
         else { ?>
             <div class="alert alert-warning" role="alert">
