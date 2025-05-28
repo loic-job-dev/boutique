@@ -1,16 +1,10 @@
 <?php session_start(); ?>
 
+<?php include(__DIR__ . '/database/database.php'); ?>
 <?php include(__DIR__ . '/my-functions.php'); ?>
 <?php include(__DIR__ . '/datas.php'); ?>
 
-<?php
-try {
-    $mysqlClient = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'loic', 'fakepassword');
-}
-catch (Exception $e){
-    die("Erreur : " . $e->getMessage());
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="fr">

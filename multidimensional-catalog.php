@@ -2,7 +2,7 @@
     <form action="/check.php" method="POST">
         <div class="row justify-content-center">
 
-            <?php foreach ($products as $key => $product) { 
+            <?php foreach (getAllproducts ($mysqlClient) as $key => $product) { 
                 //echo $key;  // 0, 1, 2...
                 //echo $products[$key]["name"];  // "Casque", "Coquille"... ?>
             
@@ -15,9 +15,9 @@
                             <h3 class="card-title"><?= $product["name"] ?></h3>
                             <p class="card-text text-wrap">Prix : <?= formatPrice($product["price"]) ?></p>
                             <p class="card-text text-wrap">Prix HT : <?= formatPrice(priceExcludingVAT($product["price"])); ?></p>
-                            <p class="card-text text-wrap">Prix discount : <?= formatPrice(discountedPrice($product["price"], $product["discount"])); ?></p>
+                            <p class="card-text text-wrap">Description : <?= $product["description"]; ?></p>
                         </div>
-                        <img src="<?= $product["picture_url"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
+                        <img src="<?= $product["picture"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
 
                         <fieldset>
                             <label for="quantity_<?= $key ?>">Quantité :</label>
