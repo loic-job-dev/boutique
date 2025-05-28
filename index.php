@@ -9,6 +9,18 @@
             </div>
         </div>
 
+        <?php
+        $sqlQuerry = "SELECT * FROM products";
+        $productsStatement = $mysqlClient->prepare($sqlQuerry);
+        $productsStatement->execute();
+        $productsBDD = $productsStatement->fetchAll();
+
+        foreach ($productsBDD as $productBDD) { ?>
+            <p><?php echo $productBDD["name"];?></p>
+        <?php
+        }
+        ?>
+
         <?php require(__DIR__ . '/multidimensional-catalog.php'); ?>
 
 
