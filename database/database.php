@@ -30,5 +30,11 @@ function getAllproducts ($mysqlClient) {
     return $testStatement->fetchAll();
 }
 
+function getAllAvailableproducts ($mysqlClient) {
+    $testStatement = $mysqlClient->prepare("SELECT * FROM products WHERE available = 1");
+    $testStatement->execute();
+
+    return $testStatement->fetchAll();
+}
 
 ?>

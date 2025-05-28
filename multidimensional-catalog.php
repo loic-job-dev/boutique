@@ -15,7 +15,7 @@
                             <h3 class="card-title"><?= $product["name"] ?></h3>
                             <p class="card-text text-wrap">Prix : <?= formatPrice($product["price"]) ?></p>
                             <p class="card-text text-wrap">Prix HT : <?= formatPrice(priceExcludingVAT($product["price"])); ?></p>
-                            <p class="card-text text-wrap">Description : <?= $product["description"]; ?></p>
+                            <p class="card-text text-wrap"><?= $product["description"]; ?></p>
                         </div>
                         <img src="<?= $product["picture"] ?>" alt="<?= $product["name"] ?>" class="card-img-top">
 
