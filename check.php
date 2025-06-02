@@ -29,15 +29,15 @@ foreach ($_POST['quantities'] as $key => $quantity) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
     //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
 foreach ($_POST['quantities'] as $key => $quantity) {
-    if (isset(getAllproducts ($mysqlClient)[$key])) {
+    if (isset(updateCatalog ($mysqlClient)[$key])) {
         if ($_POST["quantities"][$key] != 0) {
         $_SESSION["commande"][$key] = [
-            'name' => getAllproducts ($mysqlClient)[$key]["name"],
-            'price' => getAllproducts ($mysqlClient)[$key]["price"],
-            'weight' => getAllproducts ($mysqlClient)[$key]["weight"],
+            'name' => updateCatalog ($mysqlClient)[$key]["name"],
+            'price' => updateCatalog ($mysqlClient)[$key]["price"],
+            'weight' => updateCatalog ($mysqlClient)[$key]["weight"],
             'quantity' => $quantity,
-            'total_price' => getAllproducts ($mysqlClient)[$key]["price"] * $quantity,
-            'total_weight' => getAllproducts ($mysqlClient)[$key]["weight"] * $quantity,
+            'total_price' => updateCatalog ($mysqlClient)[$key]["price"] * $quantity,
+            'total_weight' => updateCatalog ($mysqlClient)[$key]["weight"] * $quantity,
         ];
         } }
         else { ?>
