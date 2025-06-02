@@ -1,6 +1,7 @@
 <?php $title = "Boutique en ligne de loic-job-dev";
 require(__DIR__ . '/header.php'); 
 
+
 if (!isset($_SESSION['commande'])) {
     $_SESSION['commande'] = [];
 }
@@ -29,33 +30,34 @@ foreach ($_POST['quantities'] as $key => $quantity) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
     //Si la méthode est en POST et qu'un tableau 'quantities' est bien présent :
 foreach ($_POST['quantities'] as $key => $quantity) {
-    if (isset(updateCatalog ($mysqlClient)[$key])) {
-        if ($_POST["quantities"][$key] != 0) {
+
+    if (isset($_SESSION["updateCatalog"][$key])) {
+        if ($_POST["quantities"][$product['id']] != 0) {
         $_SESSION["commande"][$key] = [
-            'name' => updateCatalog ($mysqlClient)[$key]["name"],
-            'price' => updateCatalog ($mysqlClient)[$key]["price"],
-            'weight' => updateCatalog ($mysqlClient)[$key]["weight"],
+            'name' => $_SESSION["updateCatalog"][$key]["name"],
+            'price' => $_SESSION["updateCatalog"][$key]["price"],
+            'weight' => $_SESSION["updateCatalog"][$key]["weight"],
             'quantity' => $quantity,
-            'total_price' => updateCatalog ($mysqlClient)[$key]["price"] * $quantity,
-            'total_weight' => updateCatalog ($mysqlClient)[$key]["weight"] * $quantity,
+            'total_price' => $_SESSION["updateCatalog"][$key]["price"] * $quantity,
+            'total_weight' => $_SESSION["updateCatalog"][$key]["weight"] * $quantity,
         ];
         } }
-        else { ?>
-            <div class="alert alert-warning" role="alert">
-                <p>Tricheur!</p>
-                <p>Merci de ne pas pirater le site !</p>
-            </div>
-            <div class="container-fluid ms-1 me-1">
-                <form action="/end-session.php" method="POST">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-8">
-                        <input type="submit" name="submit" class="btn btn-primary" value="Retour accueil">
-                    </div>
-                </div>
-                </form>
-            </div><?php
-        exit();
-        }
+        // else { ?>
+        <!-- //     <div class="alert alert-warning" role="alert">
+        //         <p>Tricheur!</p>
+        //         <p>Merci de ne pas pirater le site !</p>
+        //     </div>
+        //     <div class="container-fluid ms-1 me-1">
+        //         <form action="/end-session.php" method="POST">
+        //         <div class="row justify-content-center">
+        //             <div class="col-12 col-lg-8">
+        //                 <input type="submit" name="submit" class="btn btn-primary" value="Retour accueil">
+        //             </div>
+        //         </div>
+        //         </form>
+        //     </div>--> <?php 
+        // exit();
+        // }
     }
 }
 

@@ -47,10 +47,10 @@ function updateCatalog($mysqlClient)
 
         return $updateProducts->fetchAll();
     } else {
-        $sortPrice = $_GET["sortPrice" ?? "ASC"];
-        $priceMin = $_GET["priceMin"] * 100 ?? 0;
-        $priceMax = $_GET["priceMax"] * 100 ?? 999999999999;
-        $category = $_GET["category" ?? 0];
+        $sortPrice = $_GET["sortPrice"] ?? "ASC";
+        $priceMin = ($_GET["priceMin"] ?? 0) * 100;
+        $priceMax = ($_GET["priceMax"] ?? 10000) * 100;
+        $category = $_GET["category"] ?? 0;
 
         //création de la querry
         $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price > $priceMin AND price < $priceMax AND category_id = $category ORDER BY price $sortPrice");

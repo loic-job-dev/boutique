@@ -37,9 +37,11 @@
     <form action="/check.php" method="POST">
         <div class="row justify-content-center">
 
-            <?php foreach (updateCatalog($mysqlClient) as $key => $product) {
+            <?php $_SESSION["updateCatalog"] = updateCatalog($mysqlClient);
+            foreach ($_SESSION["updateCatalog"] as $key => $product) {
                 //echo $key;  // 0, 1, 2...
                 //echo $products[$key]["name"];  // "Casque", "Coquille"... 
+                $key = $product["id"];
             ?>
 
 
@@ -55,7 +57,7 @@
 
                         <fieldset>
                             <label for="quantity_<?= $key ?>">Quantité :</label>
-                            <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?= $_SESSION["commande"][$key]["quantity"] ?? "0" ?>" required>
+                            <input type="number" class="form-control w-50 m-auto" id="quantity_<?= $key ?>" name="quantities[<?= $product['id'] ?>]" min="0" step="1" value="<?= $_SESSION["commande"][$key]["quantity"] ?? "0" ?>" required>
                             <!-- Tous les noms de champs utilisent name="champs[<?= $key ?>]" pour lier les données à chaque produit unique. -->
                         </fieldset>
                     </div>
