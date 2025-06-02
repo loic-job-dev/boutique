@@ -15,7 +15,7 @@
                     <label for="priceMin">Prix minimum :</label>
                     <input type="number" class="form-control w-50 m-auto" id="priceMin" name="priceMin" min="0" value="<?= $_GET["priceMin"] ?? "0" ?>">
                     <label for="priceMax">Prix maximum :</label>
-                    <input type="number" class="form-control w-50 m-auto" id="priceMax" name="priceMax" min="0" value="<?= $_GET["priceMax"] ?>">
+                    <input type="number" class="form-control w-50 m-auto" id="priceMax" name="priceMax" min="0" value="<?= $_GET["priceMax"] ?? 1000 ?>">
                 </div>
                 <div class="col-3">
                     <legend>Catégorie :</legend>
