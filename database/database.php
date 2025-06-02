@@ -31,10 +31,27 @@ function getAllproducts ($mysqlClient) {
 }
 
 function getAllAvailableproducts ($mysqlClient) {
-    $testStatement = $mysqlClient->prepare("SELECT * FROM products WHERE available = 1");
-    $testStatement->execute();
+    $availableproducts = $mysqlClient->prepare("SELECT * FROM products WHERE available = 1");
+    $availableproducts->execute();
 
-    return $testStatement->fetchAll();
+    return $availableproducts->fetchAll();
+}
+
+function updateCatalog ($mysqlClient) {
+    //récuparétion des valeurs du formulaire GET :
+    $sortPrice = $_GET["sortPrice" ?? "ASC"];
+    $priceMin = $_GET["priceMin"]*100 ?? 0;
+    $priceMax = $_GET["priceMax"]*100 ?? 999999999999;
+    $category = $_GET["category" ?? 0];
+    
+    //création de la querry
+    $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price > $priceMin AND price < $priceMax AND category_id = $category ORDER BY price $sortPrice");
+    if ($category == 0) {
+        $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price >= $priceMin AND price <= $priceMax ORDER BY price $sortPrice");
+    }
+    $updateProducts->execute();
+
+    return $updateProducts->fetchAll();
 }
 
 ?>
