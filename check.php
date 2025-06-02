@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantities'])) {
 foreach ($_POST['quantities'] as $key => $quantity) {
 
     if (isset($_SESSION["updateCatalog"][$key])) {
-        if ($_POST["quantities"][$product['id']] != 0) {
+        if ($_POST["quantities"][$key] != 0) {
         $_SESSION["commande"][$key] = [
             'name' => $_SESSION["updateCatalog"][$key]["name"],
             'price' => $_SESSION["updateCatalog"][$key]["price"],
