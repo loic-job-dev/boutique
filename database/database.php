@@ -1,6 +1,6 @@
 <?php
 try {
-    $mysqlClient = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'loic', 'fakepassword', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    $mysqlClient = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'loic', 'fakepassword', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]);
 } catch (Exception $e) {
     die("Erreur : " . $e->getMessage());
 }
@@ -70,3 +70,6 @@ function updateCatalog($mysqlClient)
         return $updateProducts->fetchAll();
     }
 }
+
+
+?>

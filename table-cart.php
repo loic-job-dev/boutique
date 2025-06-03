@@ -13,15 +13,15 @@
                     </thead>
                     <tbody>
                         <?php foreach ($_SESSION["commande"] as $key => $product) { ?>
-                                <tr>
-                                    <td><?php echo $product["name"] ?></td>
-                                    <td class="d-flex align-items-center gap-2"><?php echo $product["quantity"] ?>
-                                        <input type="number" class="form-control w-50" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?=$_SESSION["commande"][$key]["quantity"] ?? "0"?>" required>
-                                    </td>
-                                    <td><?php formatPrice($product["price"]) ?></td>
-                                    <td><?php formatPrice($product["total_price"]) ?></td>
-                                </tr>
-                        <?php } 
+                            <tr>
+                                <td><?php echo $product["name"] ?></td>
+                                <td class="d-flex align-items-center gap-2"><?php echo $product["quantity"] ?>
+                                    <input type="number" class="form-control w-50" id="quantity_<?= $key ?>" name="quantities[<?= $key ?>]" min="0" step="1" value="<?= $_SESSION["commande"][$key]["quantity"] ?? "0" ?>" required>
+                                </td>
+                                <td><?php formatPrice($product["price"]) ?></td>
+                                <td><?php formatPrice($product["total_price"]) ?></td>
+                            </tr>
+                        <?php }
                         ?>
                     </tbody>
                     <tfoot>
@@ -48,4 +48,9 @@
             </div>
         </div>
     </form>
+    <div class="row justify-content-center">
+        <form action="/validate.php" method="POST" class="mt-3">
+            <input type="submit" name="validate" class="btn btn-success" value="Valider la commande">
+        </form>
+    </div>
 </div>
