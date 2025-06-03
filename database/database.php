@@ -44,20 +44,28 @@ function updateCatalog($mysqlClient)
     if (empty($_GET)) {
         $updateProducts = $mysqlClient->prepare("SELECT * FROM products");
         $updateProducts->execute();
-
         return $updateProducts->fetchAll();
+
     } else {
-        $sortPrice = $_GET["sortPrice"] ?? "ASC";
+        $sortPrice = strtoupper($_GET["sortPrice"] ?? "ASC");
         $priceMin = ($_GET["priceMin"] ?? 0) * 100;
         $priceMax = ($_GET["priceMax"] ?? 10000) * 100;
-        $category = $_GET["category"] ?? 0;
+        $category = (int) ($_GET["category"] ?? 0);
+
+        //Sécurisation de $sortPrice
+        if (!in_array($sortPrice, ['ASC', 'DESC'])) {
+            $sortPrice = 'ASC';
+        }
+
 
         //création de la querry
-        $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price > $priceMin AND price < $priceMax AND category_id = $category ORDER BY price $sortPrice");
+        $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price > :priceMin AND price < :priceMax AND category_id = :category ORDER BY price $sortPrice");
+        $params = ['priceMin' => $priceMin, 'priceMax' => $priceMax, 'category' => $category];
         if ($category == 0) {
-            $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price >= $priceMin AND price <= $priceMax ORDER BY price $sortPrice");
+            $updateProducts = $mysqlClient->prepare("SELECT * FROM products WHERE price >= :priceMin AND price <= :priceMax ORDER BY price $sortPrice");
+            $params = ['priceMin' => $priceMin, 'priceMax' => $priceMax];
         }
-        $updateProducts->execute();
+        $updateProducts->execute($params);
 
         return $updateProducts->fetchAll();
     }

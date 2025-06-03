@@ -1,6 +1,6 @@
 <div class="container mt-1 mb-5">
     <form action="index.php" method="GET">
-        <div class="row justify-content-center border border-dark rounded">
+        <div class="row justify-content-center border border-dark rounded bg-light-subtle pb-2 pt-2">
                 <div class="col-3">
                     <legend>Tri par prix :</legend>
                     <select id="sortPrice" name="sortPrice">
@@ -37,14 +37,15 @@
     <form action="/check.php" method="POST">
         <div class="row justify-content-center">
 
-            <?php $_SESSION["updateCatalog"] = [];
+            <?php 
+            //Création d'un catalogue enregsitré en session, avec un index basé sur l'id des produits en abse de donnée pour conserver ces derniers d'une page à l'autre
+            $_SESSION["updateCatalog"] = [];
             foreach (updateCatalog($mysqlClient) as $product) {
             $_SESSION["updateCatalog"][$product['id']] = $product;
             };
-            
+
             foreach ($_SESSION["updateCatalog"] as $key => $product) {
-                //echo $key;  // 0, 1, 2...
-                //echo $products[$key]["name"];  // "Casque", "Coquille"... 
+                //définition de la clé sur l'id des produits, pour garder une cohérence avec le tableau catalogue
                 $key = $product["id"];
             ?>
 
