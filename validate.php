@@ -16,11 +16,11 @@ $number = str_pad(((int)$index + 1), 10, '0', STR_PAD_LEFT);
 //Création de la requête d'ajout dans la BDD sur la table "orders"
 $querry = "INSERT INTO orders (number, date, shipping_cost, total, customer_id) VALUES (:number, NOW(), :shipping_cost, :total, 2)";
 $params = ['number' => $number, 'shipping_cost' => $shipping_cost, 'total' => $total];
-$orderCheked = $mysqlClient->prepare($querry);
+$orderChecked = $mysqlClient->prepare($querry);
 
-$orderCheked->execute($params);
+$orderChecked->execute($params);
 
-$orderCheked->fetchAll();
+$orderChecked->fetch();
 
 
 //Boucle sur le tableau pour ajout à la table order_product
@@ -30,8 +30,8 @@ foreach ($_SESSION["commande"] as $key => $product) {
     $quantity = $_SESSION["commande"][$key]["quantity"];
     $products_weight = $_SESSION["commande"][$key]["total_weight"];
 
-    $querry = "INSERT INTO order_product (order_id, product_id, quantity, products_weight) VALUES ($order_id,:product_id, :quantity, :products_weight)";
-    $params = ['product_id' => $product_id, 'quantity' => $quantity, 'products_weight' => $products_weight];
+    $querry = "INSERT INTO order_product (order_id, product_id, quantity, products_weight) VALUES (:order_id,:product_id, :quantity, :products_weight)";
+    $params = ['order_id' => $order_id, 'product_id' => $product_id, 'quantity' => $quantity, 'products_weight' => $products_weight];
 
     $orderProduct = $mysqlClient->prepare($querry);
 
